@@ -30,7 +30,6 @@ def slct_sample(command):
 async def on_ready():
     print(f"Logged in as {client} ...")
 
-
 @client.command()
 async def play(ctx, *args, channel: discord.VoiceChannel=None):
     """
@@ -63,7 +62,7 @@ async def play(ctx, *args, channel: discord.VoiceChannel=None):
                 except AttributeError:
                     # raise InvalidVoiceChannel
                     print('No channel to join. Please either specify a valid channel or join one.')
-            print(">>> Channel selected : ",channel,"  -Id : ",channel.id)
+            print(">>> Channel selected : ",channel,"  - Id : ",channel.id)
 
             # verify that the target channel is not in forbidden channels
             if str(channel.id) in forbidden_chans:
@@ -93,7 +92,7 @@ async def play(ctx, *args, channel: discord.VoiceChannel=None):
                         print(f'Connecting to channel: <{channel}> timed out.')
                     
                 conn_vc = ctx.voice_client # Get the voice client after connection
-                print("Conn_vc : ",conn_vc)
+                print(">>> Conn_vc : ",conn_vc)
 
                 #await ctx.send(f'Connected to: **{channel}**') # Display where soundbox just connected
 
@@ -106,7 +105,7 @@ async def play(ctx, *args, channel: discord.VoiceChannel=None):
                     await ctx.send(">>> Can't play the audio file ...")
         else :
             print(">>> Error : Invalid command !")
-            await ctx.send(">>> Error : Invalid command !\n You must pass only one sample name at time!\If you want to get the avalaible samples, type '!samples' !")
+            await ctx.send(">>> Error : Invalid command !\n*- Ensure you have passed only one argument.\n- If you want to get the avalaible samples, type `!samples`.*")
             pass
     else:
         print(">>> This user isn not allowed to use soundbox")
@@ -118,7 +117,7 @@ async def samples(ctx):
 
     msg = ">>> __**List of available samples :**__"
     for f in listdir(settings["samples_dir"]):
-        msg += f'\n>>>\t - {f[:-4]} ;' # Display each filename (remove the '.mp3')
+        msg += f'\n\t{f[:-4]} ;' # Display each filename (remove the '.mp3')
     print(msg)
     await ctx.send(msg)
 

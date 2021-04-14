@@ -1,0 +1,10 @@
+{
+    "samples_dir": "samples", // Name of the directory that contains samples
+    "prefix": "!", // You can choose the commands prefix
+    "ffmpeg_path": "", // Put here the path to ffmpeg.exe
+    "token": "", // Put your bot's token here
+    "forbidden_chans": "" // Put here the ID's of the forbidden channels (separated by ',')
+}
+
+
+

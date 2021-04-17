@@ -99,7 +99,11 @@ async def play(ctx, *args, channel: discord.VoiceChannel=None):
                 try:
                     conn_vc.play(discord.FFmpegPCMAudio(executable = settings["ffmpeg_path"], source = audio_source)) # Play the mp3 file
                     print(f">>> Played {command} ")
-                    await ctx.send(f">>> Played {command} ")
+                    played_msg = await ctx.send(f">>> Played {command} ")
+                    if bool(settings["delete_msg_after"]):
+                        asyncio.sleep(settings["delay"]) # If the option 'delete messages' is activated, wait for a given delay
+                        await ctx.message.delete() # Delete command message
+                        await played_msg.delete() # Delete played song message
                 except Exception as e:
                     print(f">>> Can't play the audio file ...\n--> {e}")
                     await ctx.send(">>> Can't play the audio file ...")
@@ -120,5 +124,11 @@ async def samples(ctx):
         msg += f'\n\t{f[:-4]} ;' # Display each filename (remove the '.mp3')
     print(msg)
     await ctx.send(msg)
+
+@client.command()
+async def disconnect(ctx):
+    """Disconnects the bot on command '!disconnect'."""
+    server = ctx.message.guild.voice_client
+    await server.disconnect()
 
 client.run(settings["token"])

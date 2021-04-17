@@ -3,7 +3,9 @@
     "prefix": "!", // You can choose the commands prefix
     "ffmpeg_path": "", // Put here the path to ffmpeg.exe
     "token": "", // Put your bot's token here
-    "forbidden_chans": "" // Put here the ID's of the forbidden channels (separated by ',')
+    "forbidden_chans": "", // Put here the ID's of the forbidden channels (separated by ',')
+    "delete_msg_after": "True", // Choose if you want to delete the command and the played song messages
+    "delay": "20" // Delay before deleting the command and played song messages
 }
 
 

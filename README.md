@@ -28,7 +28,9 @@ A soundbox bot for discord. You just have to create your samples database, and i
 - prefix : You can change here the prefix before bot commands. Default prefix is '!' (Example : `!samples`).
 - ffmpeg_path : Put here the path to the 'ffmpeg.exe' file you downloaded earlier. ⚠️ Without this information, the discord-soundbox is unable to find the .exe by itself. So an error will occure !
 - token : Put here your bot's token.
-- forbidden chans : Put here all the ID's of forbidden channels (separated by a ','). Then the soundbox will not be authorised to speak in these voice channels.
+- forbidden_chans : Put here all the ID's of forbidden channels (separated by a ','). Then the soundbox will not be authorised to speak in these voice channels.
+- delete_msg_after : "True" if you want to delete your command message and the bot's answer after a delay, "False" if you don't. ⚠️ It's "True"/"False", not "true"/"false" !
+- delay : Set the delay ⚠️ Doesn't work very well in this version, the delay is about 1sec ^^
 
 # Now you can use it !
 
@@ -39,4 +41,5 @@ A soundbox bot for discord. You just have to create your samples database, and i
 **__Commands :__**
 - `!play sample_name` : discord-soundbox connect to your voice_channel and play the selected sample.
 - `!samples` : If you don't remember the available samples, you can show their list with this command.
+- `!disconnect`: Disconnects the bot from it's current voice channel
   
